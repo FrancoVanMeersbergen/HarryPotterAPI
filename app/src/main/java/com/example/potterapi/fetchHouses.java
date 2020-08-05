@@ -41,9 +41,10 @@ public class fetchHouses extends AsyncTask<Void,Void,Void> {
                         "Head Of House: " + JO.get("headOfHouse") + "\n" +
                         "House Ghost: " + JO.get("houseGhost") + "\n" +
                         "Founder: " + JO.get("founder") + "\n" +
-                        "School: " + JO.get("school") + "\n" +
+                      //  "School: " + JO.get("school") + "\n" + there are inconsistencies in the data regarding certain fields,for example, Gryffindor has a school listed whereas Slytherin does not, this leaves Slytherin out of the displayed data.
                         "Values: " + JO.get("values") + "\n" +
-                        "Colors: " + JO.get("colors") + "\n";
+                        "Colors: " + JO.get("colors") + "\n" +
+                        "\n";
 
                 dataParsedHouses = dataParsedHouses + singleParsedHouses;
             }

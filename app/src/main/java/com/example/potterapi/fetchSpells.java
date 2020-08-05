@@ -39,7 +39,8 @@ public class fetchSpells extends AsyncTask<Void,Void,Void> {
                 JSONObject JO = (JSONObject) JA.get(i);
                 singleParsedSpells = "Spell: " + JO.get("spell") + "\n" +
                         "Type: " + JO.get("type") + "\n" +
-                        "Effect: " + JO.get("effect") + "\n";
+                        "Effect: " + JO.get("effect") + "\n"+
+                        "\n";
 
                 dataParsedSpells = dataParsedSpells + singleParsedSpells;
             }

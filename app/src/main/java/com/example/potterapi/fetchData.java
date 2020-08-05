@@ -19,11 +19,11 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
     String dataPupils ="";
     String dataParsedPupil ="";
     String singleParsedPupils="";
-
+//connecting to the  JSON file and reading the lines of data
     @Override
     protected Void doInBackground(Void... voids) {
         try {
-            URL urlPupils = new URL("https://www.potterapi.com/v1/characters?key=%242a%2410%241JEnmtEF417yBaFZcr51qukRjaKv8d5toEG5DKP%2FIUZWIVwfsaF7y");
+            URL urlPupils = new URL("https://jsonkeeper.com/b/PRE2");
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlPupils.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
@@ -38,30 +38,46 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
             JSONArray JA = new JSONArray(dataPupils);
             for(int i = 0; i <JA.length(); i++){
                 JSONObject JO = (JSONObject) JA.get(i);
-
+                //This just changes how the data appears, yes/no instead of true false, unknown instead of blank etc.
                 String OOTP = "";
-                if (JO.get("orderOfThePhoenix") == "false"){
-                    OOTP = "No";
-                }else{
-                    OOTP= "Yes";
-                }
+               if(JO.get("orderOfThePhoenix") != ""){
+                   if (JO.get("orderOfThePhoenix") == "false"){
+                       OOTP = "No";
+                   }else{
+                       OOTP= "Yes";
+                   }
+               }else{
+                   OOTP = "Unknown";
+               }
                 String MOM = "";
-                if (JO.get("ministryOfMagic") == "false"){
-                    MOM = "No";
+                if(JO.get("ministryOfMagic") != ""){
+                    if (JO.get("ministryOfMagic") == "false"){
+                        MOM = "No";
+                    }else{
+                        MOM= "Yes";
+                    }
                 }else{
-                    MOM= "Yes";
+                    MOM = "Unknown";
                 }
                 String DDA = "";
-                if (JO.get("dumbledoresArmy") == "false"){
-                    DDA = "No";
+                if(JO.get("dumbledoresArmy") != ""){
+                    if (JO.get("dumbledoresArmy") == "false"){
+                        DDA = "No";
+                    }else{
+                        DDA= "Yes";
+                    }
                 }else{
-                    DDA= "Yes";
+                    DDA = "Unknown";
                 }
                 String DE = "";
-                if (JO.get("deathEater") == "false"){
-                    DE = "No";
+                if(JO.get("deathEater") != ""){
+                    if (JO.get("deathEater") == "false"){
+                        DE = "No";
+                    }else{
+                        DE= "Yes";
+                    }
                 }else{
-                    DE= "Yes";
+                    DE = "Unknown";
                 }
                 String Role = "";
                 if (JO.get("role") == "")
@@ -93,7 +109,7 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
                     BloodStatus = (String) JO.get("bloodStatus");
                 }else
                 {
-                    BloodStatus = "Unknown";
+                    BloodStatus = "Unknown / NA";
                 }
                 String Species = "";
                 if (JO.get("species") != "")
@@ -101,10 +117,11 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
                     Species = (String) JO.get("species");
                 }else
                 {
-                    Species = "Unknown";
+                    Species = "Unknown / NA";
                 }
 
-                singleParsedPupils = "Name: " + JO.get("name") + "\n"+
+                //displaying the data in a set format
+                    singleParsedPupils = "Name: " + JO.get("name") + "\n" +
                         "Role: " + Role + "\n" +
                         "House: " + House + "\n"+
                         "School: " + School + "\n"+
@@ -113,7 +130,8 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
                         "Dumbledore's Army: " + DDA + "\n"+
                         "Death Eater: " + DE + "\n"+
                         "Blood status: " + BloodStatus + "\n"+
-                        "Species: " + Species + "\n";
+                        "Species: " + Species + "\n" +
+                        "\n";
 
                         dataParsedPupil = dataParsedPupil + singleParsedPupils;
             }
@@ -134,7 +152,7 @@ public class fetchData extends AsyncTask<Void,Void,Void>{
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-
+    //sending the display data to the actual activity.
         PupilsActivity.data.setText(this.dataParsedPupil);
     }
 }

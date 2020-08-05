@@ -2,24 +2,12 @@ package com.example.potterapi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class PupilsActivity extends AppCompatActivity {
     Button click;
@@ -29,6 +17,7 @@ public class PupilsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pupils);
         configureBackButton();
+       configureSortingButton();
 
         click = findViewById(R.id.fetchDataBtn);
         data = (TextView) findViewById(R.id.textDisplay);
@@ -42,6 +31,15 @@ public class PupilsActivity extends AppCompatActivity {
         });
     }
 
+    private void configureSortingButton(){
+        Button sortBtn = (Button) findViewById(R.id.srtBtn);
+        sortBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PupilsActivity.this, sortingHat.class));
+            }
+        });
+    }
 
     private void configureBackButton(){
         ImageButton backButton = (ImageButton) findViewById(R.id.backBtn);

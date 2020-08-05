@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         pupilsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, PupilsActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(MainActivity.this, PupilsActivity.class));
+
             }
         });
     }
