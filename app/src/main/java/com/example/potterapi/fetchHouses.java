@@ -21,7 +21,7 @@ public class fetchHouses extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        try {
+        try {//pulls data from the url provided and reads it line by line, adding it to the string dataHouses
             URL urlHouses = new URL("https://www.potterapi.com/v1/houses?key=%242a%2410%241JEnmtEF417yBaFZcr51qukRjaKv8d5toEG5DKP%2FIUZWIVwfsaF7y");
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlHouses.openConnection();
@@ -32,7 +32,7 @@ public class fetchHouses extends AsyncTask<Void,Void,Void> {
                 line = bufferedReader.readLine();
                 dataHouses = dataHouses + line;
             }
-
+            //makes an array out of dataHouses and iterates through each object to get the data, the singleParsedHouses then displays it in the same fashion as specified
             JSONArray JA = new JSONArray(dataHouses);
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
@@ -41,7 +41,7 @@ public class fetchHouses extends AsyncTask<Void,Void,Void> {
                         "Head Of House: " + JO.get("headOfHouse") + "\n" +
                         "House Ghost: " + JO.get("houseGhost") + "\n" +
                         "Founder: " + JO.get("founder") + "\n" +
-                      //  "School: " + JO.get("school") + "\n" + there are inconsistencies in the data regarding certain fields,for example, Gryffindor has a school listed whereas Slytherin does not, this leaves Slytherin out of the displayed data.
+                     //  "School: " + JO.get("school") + "\n" + there are inconsistencies in the data regarding certain fields,for example, Gryffindor has a school listed whereas Slytherin does not, this leaves Slytherin out of the displayed data.
                         "Values: " + JO.get("values") + "\n" +
                         "Colors: " + JO.get("colors") + "\n" +
                         "\n";
@@ -63,7 +63,7 @@ public class fetchHouses extends AsyncTask<Void,Void,Void> {
         return null;
     }
 
-
+// this executable is called in the main activity for houses
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);

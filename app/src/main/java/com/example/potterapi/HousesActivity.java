@@ -20,7 +20,7 @@ public class HousesActivity extends AppCompatActivity {
 
         click = findViewById(R.id.fetchDataBtn);
         data = (TextView) findViewById(R.id.textDisplay);
-
+// executes the processes made on the fetchHouses class
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -29,7 +29,7 @@ public class HousesActivity extends AppCompatActivity {
             }
         });
     }
-
+// allows the back button to take you back to the main menu
     private void configureBackButton(){
         ImageButton backButton = (ImageButton) findViewById(R.id.backBtn);
         backButton.setOnClickListener(new View.OnClickListener() {

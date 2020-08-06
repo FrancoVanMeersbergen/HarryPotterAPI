@@ -18,10 +18,10 @@ public class PupilsActivity extends AppCompatActivity {
         setContentView(R.layout.pupils);
         configureBackButton();
        configureSortingButton();
-
+// need to assign the button and Text View to the button and Text View used in the xml file because it needs to affect those specific objects
         click = findViewById(R.id.fetchDataBtn);
         data = (TextView) findViewById(R.id.textDisplay);
-
+// executes the processes made on the fetchData class
         click.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,7 +30,7 @@ public class PupilsActivity extends AppCompatActivity {
             }
         });
     }
-
+//set an intent to take you to the next screen which was the sorting hat screen.
     private void configureSortingButton(){
         Button sortBtn = (Button) findViewById(R.id.srtBtn);
         sortBtn.setOnClickListener(new View.OnClickListener() {

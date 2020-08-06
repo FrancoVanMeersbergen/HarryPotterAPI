@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         configureHousesButton();
         configureExitButton();
     }
-
+//buttons for navigation on the main screen
     private void configurePupilsButton(){
         ImageButton pupilsButton = (ImageButton) findViewById(R.id.pupilsBtn);
         pupilsButton.setOnClickListener(new View.OnClickListener() {

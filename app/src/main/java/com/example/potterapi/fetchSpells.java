@@ -22,7 +22,7 @@ public class fetchSpells extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        try {
+        try {//pulls data from the url provided and reads it line by line, adding it to the string dataSpells
             URL urlPupils = new URL("https://www.potterapi.com/v1/spells?key=%242a%2410%241JEnmtEF417yBaFZcr51qukRjaKv8d5toEG5DKP%2FIUZWIVwfsaF7y");
 
             HttpURLConnection httpURLConnection = (HttpURLConnection) urlPupils.openConnection();
@@ -33,7 +33,7 @@ public class fetchSpells extends AsyncTask<Void,Void,Void> {
                 line = bufferedReader.readLine();
                 dataSpells = dataSpells + line;
             }
-
+            //makes an array out of dataHouses and iterates through each object to get the data, the singleParsedHouses then displays it in the same fashion as specified
             JSONArray JA = new JSONArray(dataSpells);
             for (int i = 0; i < JA.length(); i++) {
                 JSONObject JO = (JSONObject) JA.get(i);
@@ -59,7 +59,7 @@ public class fetchSpells extends AsyncTask<Void,Void,Void> {
         return null;
     }
 
-
+    // allows the back button to take you back to the main menu
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
